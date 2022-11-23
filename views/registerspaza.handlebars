@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spaza Suggestion</title>
+</head>
+<body>
+<h1>
+    REGISTER A SHOP
+</h1>
+<a href="/">Register</a>
+<!--    register form-->
+{{#if messages.error}}
+    <p style="color: red" class="error">{{messages.error}}</p>
+{{/if}}
+{{#if messages.success}}
+    <p style="color: green" class="success">{{messages.success}}</p>
+{{/if}}
+{{#if messages.theId}}
+    <p style="color: blue" class="theId">Here Is Your Unique Code Pls Save It And Use It To Login <span style="font-size: 40px;text-decoration: underline">{{messages.theId}}</span></p>
+{{/if}}
+    <form action="/registerspaza" method="post">
+        <label for="shopname">Shop Name</label>
+        <input type="text" name="shopname" id="shopname"/>
+        <label for="shoplocation">Shop Location</label>
+        <select name="shoplocation" id="shoplocation">
+            {{#each areas}}
+                <option value="{{this.area_name}}">{{this.area_name}}</option>
+            {{/each}}
+        </select>
+        <button type="submit">Register</button>
+    </form>
+    <a href="/loginspaza">Login</a>
+<script src="/setTimeout.js"></script>
+</body>
+</html>

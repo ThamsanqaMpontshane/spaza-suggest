@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spaza Suggestion</title>
+</head>
+<body>
+<h1>
+    Suggestions Page
+</h1>
+<a href="/">Register</a>
+    <br>
+<!--    add a suggestion-->
+    {{#if messages.error}}
+        <p style="color: red">{{messages.error}}</p>
+    {{/if}}
+    {{#if messages.success}}
+        <p style="color: green">{{messages.success}}</p>
+    {{/if}}
+    <form action="" method="post">
+        <label for="suggestion">Suggestion</label>
+        <input type="text" name="suggestion" id="suggestion"/>
+<!--        dropdown for selecting area-->
+        <label for="area">AREA</label>
+        <select name="area" id="area">
+            {{#each areas}}
+                <option value="{{this.area_name}}">{{this.area_name}}</option>
+            {{/each}}
+        </select>
+<!--        inline styled table-->
+        <button type="submit">Add Suggestion</button>
+    </form>
+<br>
+<br>
+<br>
+<br>
+<table style="width: 100%;border: 1px solid black">
+    <tr>
+        <th style="border: 1px solid black">Suggestion</th>
+        <th style="border: 1px solid black">Area Name</th>
+        <th style="border: 1px solid black">Area Id</th>
+    </tr>
+    {{#each suggestions}}
+        <tr>
+            <td style="border: 1px solid black">{{this.product_name}}</td>
+            <td style="border: 1px solid black">{{this.area_name}}</td>
+            <td style="border: 1px solid black">{{this.area_id}}</td>
+        </tr>
+    {{/each}}
+</table>
+<script src="/setTimeout.js"></script>
+</body>
+</html>

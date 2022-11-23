@@ -4,15 +4,16 @@ import SpazaSuggest from '../spaza-suggest.js';
 import pgPromise from 'pg-promise';
 
 // const DATABASE_URL= process.env.DATABASE_URL || "postgresql://codex-coder:pg123@localhost:5432/spaza_suggest";
-const DATABASE_URL= process.env.DATABASE_URL || "postgresql://zuggs:suggest123@localhost:5432/spaza_suggest";
+const DATABASE_URL= process.env.DATABASE_URL ||
+    "postgresql://codex:pg123@localhost:5432/spaza_suggest";
 
-const config = { 
+const config = {
 	connectionString : DATABASE_URL
 }
 const pgp = pgPromise();
 
 // if (process.env.NODE_ENV == 'production') {
-// 	config.ssl = { 
+// 	config.ssl = {
 // 		rejectUnauthorized : false
 // 	}
 // }
@@ -28,11 +29,11 @@ describe ("The smart spaza", function() {
         await db.none(`delete from suggestion`);
         await db.none(`delete from spaza`);
         await db.none(`delete from spaza_client`);
-        
+
     });
 
     it("should be able to list areas", async function() {
-        
+
         const areas = await spazaSuggest.areas();
         assert.equal(5, areas.length);
         assert.equal('Khayelitsa - Site C', areas[2].area_name);
@@ -102,7 +103,7 @@ describe ("The smart spaza", function() {
         const suggestions = await spazaSuggest.suggestions(client.id);
 
         assert.equal(3, suggestions.length);
-        assert.equal('Nyanga East', suggestions[1].area_name);
+        assert.equal('Nyanga', suggestions[1].area_name);
 
     });
 
@@ -140,7 +141,7 @@ describe ("The smart spaza", function() {
 
         await spazaSuggest.acceptSuggestion(suggestions[0].id, spaza.id);
         await spazaSuggest.acceptSuggestion(suggestions[0].id, spaza.id);
-        
+
         const acceptedBySpaza = await spazaSuggest.acceptedSuggestions(spaza.id);
 
         assert.equal(1, acceptedBySpaza.length);
@@ -152,5 +153,5 @@ describe ("The smart spaza", function() {
     after(function () {
         db.$pool.end()
     });
-   
+
 });

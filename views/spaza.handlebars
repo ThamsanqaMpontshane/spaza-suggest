@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spaza Suggestion</title>
+</head>
+<body>
+<h1>
+    SPAZA
+</h1>
+<a href="/">Register</a>
+<!--    form-->
+    {{#if messages.error}}
+        <p style="color: red" class="error">{{messages.error}}</p>
+    {{/if}}
+    {{#if messages.success}}
+        <p style="color: green" class="success">{{messages.success}}</p>
+    {{/if}}
+    <form action="" method="post">
+        <label for="suggestion">Suggestion</label>
+        <select name="suggestion" id="suggestion">
+            {{#each suggestions}}
+                <option value="{{this.product_name}}">{{this.product_name}}</option>
+            {{/each}}
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    <h1>
+        SUGGESTIONS FOR <span style="color: red">{{this.spaza}}</span>
+    </h1>
+<table style="width: 50%;border: 1px solid black">
+    <tr>
+        <th style="border: 1px solid black">Suggestion</th>
+    </tr>
+    {{#each suggestions2}}
+        <tr>
+            <td style="border: 1px solid black">{{this.product_name}}</td>
+        </tr>
+    {{/each}}
+</table>
+<script src="/setTimeout.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spaza Suggestion</title>
+</head>
+<body>
+<h1>
+    Login Spaza Page
+</h1>
+<a href="/">Register</a>
+<!--    form-->
+    {{#if messages.error}}
+        <p style="color: red" class="error">{{messages.error}}</p>
+    {{/if}}
+    {{#if messages.success}}
+        <p style="color: green" class="success">{{messages.success}}</p>
+    {{/if}}
+    <form action="/loginspaza" method="post">
+        <label for="code">Code</label>
+        <input type="text" name="code" id="code"/>
+        <button type="submit">Login</button>
+    </form>
+<script src="/setTimeout.js"></script>
+</body>
+</html>
