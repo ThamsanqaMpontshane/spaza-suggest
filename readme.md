@@ -92,3 +92,5 @@ Method name | Description of method
 `productsForArea(areaId)` | products suggested for an area
 `areas()` | return all areas
 
+## Unit tests
+[![NodeJS CI with PostgreSQL](https://github.com/ThamsanqaMpontshane/spaza-suggest/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/ThamsanqaMpontshane/spaza-suggest/actions/workflows/npm-publish.yml)
